@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Scheduler</title>
+	<meta charset="utf-8">
+	<meta name="keywords" content="">
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="format-detection" content="telephone=no">
+	<style>
+		body { position: relative; margin: 0; padding: 0; color: #333; font: normal 14px/20px Helvetica, Arial, sans-serif; background: #fff;}
+		#mainwrapper { margin: 0 auto; max-width: 480px;}
+		p { margin: 0; padding: 4px 0;}
+		h1 { margin: 0; padding: 0; font-size: 140%; line-height: 1.4em; font-weight: bold;}
+		.title { padding: 4px 8px 4px 48px; position: relative;}
+		.btn { display: inline-block; padding: 0 8px; border: 1px solid #ddd; border-radius: 6px; cursor: pointer;}
+		.btn:hover { background: rgba(0,0,0,0.03);}
+		#addGroup { position: absolute; right: 8px; top: 8px;}
+		.group { position: relative; padding: 0;}
+		.group-title { position: relative; margin: 0 0 2px; padding: 0 24px 0 40px; background: rgba(0,0,0,0.03);}
+		.group-buttons { display: none; padding-left: 8px; padding-right: 8px; text-align: right;}
+		.group-buttons .btn { padding-top: 4px; padding-bottom: 4px;}
+		.remove-group { float: left;}
+		.remove-group.hide { display: none;}
+		.group h2 { margin: 0; padding: 8px; font-size: 110%; line-height: 1.4em; font-weight: bold; cursor: pointer;}
+		.group .count { position: absolute; right: 8px; top: 4px; font-size: 70%; color: #999;}
+		.issues { display: none; padding: 0 8px 2px 0;}
+		.issue { position: relative; padding: 8px 32px 8px 48px;}
+		.issue:not(:last-child) { border-bottom: 1px solid #eee;}
+		.remove-issue { position: absolute; right: 0; top: 8px;}
+		.move-group,
+		.move-issue { position: absolute; display: block; left: 0; top: 0; width: 40px; height: 100%; color: #bbb; line-height: 1em; background: rgba(0,0,0,0.03); cursor: move;}
+		.move-group:hover,
+		.move-issue:hover { background: rgba(0,0,0,0.06);} 
+		.move-group:before,
+		.move-issue:before { content: '\2195'; position: absolute; left: 50%; top: 10px; transform: translate(-50%, 0);}
+	</style>
+</head>
+<body>
+
+<div id="mainwrapper">
+
+	<div class="title">
+		<h1>Groups:</h1>
+		<span class="btn" id="addGroup">+</span>
+	</div>
+
+	<div id="groups">
+
+		<div class="group">
+			<div class="group-title">
+				<h2>Group name</h2>
+				<span class="move-group"></span>
+				<span class="count">999</span>
+			</div>
+			<p class="group-buttons">
+				<span class="btn remove-group hide">remove group</span>
+				<span class="btn add-issue">add issue</span>
+			</p>
+			<div class="issues">
+				<p class="issue">
+					<span class="move-issue"></span>
+					<span class="btn remove-issue">&times;</span>
+					Почистить аквариум
+				</p>
+				<p class="issue">
+					<span class="move-issue"></span>
+					<span class="btn remove-issue">&times;</span>
+					Купить мандарины для того, чтобы испечь вкуснейший имбирный пирог на день рождения любимой бабушки.
+				</p>
+				<p class="issue">
+					<span class="move-issue"></span>
+					<span class="btn remove-issue">&times;</span>
+					Убрать в пенале
+				</p>
+			</div>
+		</div>
+
+		<div class="group">
+			<div class="group-title">
+				<h2>Group with long name (so more long long Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur deserunt dignissimos)</h2>
+				<span class="move-group"></span>
+				<span class="count">999</span>
+			</div>
+			<p class="group-buttons">
+				<span class="btn remove-group hide">remove group</span>
+				<span class="btn add-issue">add issue</span>
+			</p>
+			<div class="issues">
+				<p class="issue">
+					<span class="move-issue"></span>
+					<span class="btn remove-issue">&times;</span>
+					Почистить аквариум
+				</p>
+				<p class="issue">
+					<span class="move-issue"></span>
+					<span class="btn remove-issue">&times;</span>
+					Купить мандарины для того, чтобы испечь вкуснейший имбирный пирог на день рождения любимой бабушки.
+				</p>
+				<p class="issue">
+					<span class="move-issue"></span>
+					<span class="btn remove-issue">&times;</span>
+					Убрать в пенале
+				</p>
+			</div>
+		</div>
+
+		<div class="group">
+			<div class="group-title">
+				<h2>Group name</h2>
+				<span class="move-group"></span>
+				<span class="count">999</span>
+			</div>
+			<p class="group-buttons">
+				<span class="btn remove-group hide">remove group</span>
+				<span class="btn add-issue">add issue</span>
+			</p>
+			<div class="issues">
+				<p class="issue">
+					<span class="move-issue"></span>
+					<span class="btn remove-issue">&times;</span>
+					Почистить аквариум
+				</p>
+				<p class="issue">
+					<span class="move-issue"></span>
+					<span class="btn remove-issue">&times;</span>
+					Купить мандарины для того, чтобы испечь вкуснейший имбирный пирог на день рождения любимой бабушки.
+				</p>
+				<p class="issue">
+					<span class="move-issue"></span>
+					<span class="btn remove-issue">&times;</span>
+					Убрать в пенале
+				</p>
+			</div>
+		</div>
+
+	</div>
+
+</div>
+
+<script src="/js/jquery-3.3.1.min.js"></script>
+
+<script>
+(function($){
+
+    let Groups = [];
+    let $groups = $('#groups');
+
+    $('#addGroup').on('click', function(){ if (addGroup()) storeIssues(); });
+    $groups.on('click', '.remove-group', function(){ if (removeGroup($(this).parents('.group'))) storeIssues(); });
+    $groups.on('click', '.add-issue', function(){ if (addIssue($(this).parents('.group'))) storeIssues(); });
+    $groups.on('click', '.remove-issue', function(){ if (removeIssue($(this).parents('.issue'))) storeIssues(); });
+		$groups.on('click', '.group-title h2', function(){
+			let $group = $(this).parents('.group');
+			$group.find('.group-buttons, .issues').slideToggle();
+		});
+
+    //loadIssues();
+
+    function loadIssues(){
+        Groups = [];
+        $groups.empty();
+        if (localStorage.issues) JSON.parse(localStorage.issues);
+        Groups.forEach(function(group){
+            let $group = addGroup(group.name);
+            group.issues.forEach(function(issue){
+                addIssue($group, issue);
+			});
+		});
+	}
+
+	function storeIssues(){
+        Groups = [];
+        $groups.find('.group').each(function(){
+            let group = { name: $(this).find('.group-title h2').text(), issues: [] };
+            $(this).find('.issues .issue').each(function(){ group.issues.push($(this).find('.issue-text').text()); });
+            Groups.push(group);
+		});
+        localStorage.issues = JSON.stringify(Groups);
+	}
+
+	function addGroup(name){
+        if (!name) name = prompt('Enter group name:');
+        if (!name) return null;
+        let html = '<div class="group"><div class="group-title"><h2>' + name + '</h2><span class="move-group"></span>';
+        html += '<span class="count">0</span></div><p class="group-buttons"><span class="btn remove-group">';
+        html += 'remove group</span><span class="btn add-issue">add issue</span></p><div class="issues"></div></div>';
+        $groups.append(html);
+        return $groups.children(':last');
+	}
+
+	function removeGroup($group){
+        if ($group.find('.issues .issue').length) return false;
+        if (!prompt('Are you sure you want to remove the group?')) return false;
+        $group.remove();
+        return true;
+	}
+
+	function addIssue($group, text){
+        if (!$group || !$group.length) return;
+        if (!text) text = prompt('Enter issue:');
+        if (!text) return null;
+        $group.find('.remove-group').addClass('hide');
+        let html = '<div class="issue"><span class="move-issue"></span><span class="btn remove-issue">&times;</span>';
+        html += '<div class="issue-text">' + text + '</div></div>';
+        $group.append(html);
+				$group.find('.count').text($group.find('.issue').length);
+        return $group.children(':last');
+	}
+
+	function removeIssue($issue){
+        if (!prompt('Are you sure you want to remove the issue?')) return false;
+				let $group = $issue.parents('.group');
+        $issue.remove();
+				$group.find('.count').text($group.find('.issue').length);
+        return true;
+	}
+
+})(jQuery);
+</script>
+
+</body>
+</html>
